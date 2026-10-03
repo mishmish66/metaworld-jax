@@ -65,8 +65,11 @@ _OBJECT_OBS = 14
 _GRIPPER_SPAN = 0.1
 # body of the spheres that show sites in images
 _SITE_MARKERS = "site_markers"
-# default (contacts, constraint rows) allocated per world
+# default (contacts, constraint rows) allocated per world, about twice the peaks of noisy scripted-policy episodes
 _BUFFER_SIZES = (64, 512)
+# share of the contact buffer usable by contacts that need convex collision (EPA), whose scratch memory each step
+# allocates in proportion
+_CCD_SHARE = 0.25
 # overflows of fixed-size MuJoCo Warp buffers, which drop contacts or constraints
 _BUFFER_OVERFLOWS = int(
     OverflowType.NEFC | OverflowType.NJMAX_NNZ | OverflowType.BROADPHASE
@@ -144,7 +147,7 @@ class Sim:
         graph_mode = getattr(wp.JaxCallableGraphMode, graph_mode.upper())
         # overflows are reported per world by `overflowed`, not printed
         self._mx = mjx.put_model(simulated, impl="warp", graph_mode=graph_mode).tree_replace({"opt._impl.warn_overflow": 0})
-        self._data_kwargs = dict(impl="warp", naconmax=naconmax, njmax=njmax)
+        self._data_kwargs = dict(impl="warp", naconmax=naconmax, naccdmax=int(naconmax * _CCD_SHARE), njmax=njmax)
 
     def _placed(self, layout):
         if not len(self._moved):
