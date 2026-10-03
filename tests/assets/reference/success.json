@@ -1,0 +1,202 @@
+{
+ "assembly": {
+  "success_rate": 1.0,
+  "mean_steps": 89.46
+ },
+ "basketball": {
+  "success_rate": 0.92,
+  "mean_steps": 95.6086956521739
+ },
+ "bin-picking": {
+  "success_rate": 1.0,
+  "mean_steps": 123.62
+ },
+ "box-close": {
+  "success_rate": 0.86,
+  "mean_steps": 107.25581395348837
+ },
+ "button-press": {
+  "success_rate": 1.0,
+  "mean_steps": 59.42
+ },
+ "button-press-topdown": {
+  "success_rate": 1.0,
+  "mean_steps": 65.3
+ },
+ "button-press-topdown-wall": {
+  "success_rate": 1.0,
+  "mean_steps": 56.86
+ },
+ "button-press-wall": {
+  "success_rate": 0.96,
+  "mean_steps": 64.625
+ },
+ "coffee-button": {
+  "success_rate": 1.0,
+  "mean_steps": 35.36
+ },
+ "coffee-pull": {
+  "success_rate": 1.0,
+  "mean_steps": 79.16
+ },
+ "coffee-push": {
+  "success_rate": 1.0,
+  "mean_steps": 54.5
+ },
+ "dial-turn": {
+  "success_rate": 1.0,
+  "mean_steps": 72.1
+ },
+ "disassemble": {
+  "success_rate": 0.98,
+  "mean_steps": 129.30612244897958
+ },
+ "door-close": {
+  "success_rate": 1.0,
+  "mean_steps": 65.66
+ },
+ "door-lock": {
+  "success_rate": 1.0,
+  "mean_steps": 83.52
+ },
+ "door-open": {
+  "success_rate": 0.92,
+  "mean_steps": 81.80434782608695
+ },
+ "door-unlock": {
+  "success_rate": 1.0,
+  "mean_steps": 45.26
+ },
+ "drawer-close": {
+  "success_rate": 1.0,
+  "mean_steps": 78.34
+ },
+ "drawer-open": {
+  "success_rate": 1.0,
+  "mean_steps": 88.78
+ },
+ "faucet-close": {
+  "success_rate": 1.0,
+  "mean_steps": 64.7
+ },
+ "faucet-open": {
+  "success_rate": 1.0,
+  "mean_steps": 59.18
+ },
+ "hammer": {
+  "success_rate": 1.0,
+  "mean_steps": 66.94
+ },
+ "hand-insert": {
+  "success_rate": 1.0,
+  "mean_steps": 59.96
+ },
+ "handle-press": {
+  "success_rate": 1.0,
+  "mean_steps": 31.94
+ },
+ "handle-press-side": {
+  "success_rate": 1.0,
+  "mean_steps": 41.24
+ },
+ "handle-pull": {
+  "success_rate": 1.0,
+  "mean_steps": 105.76
+ },
+ "handle-pull-side": {
+  "success_rate": 1.0,
+  "mean_steps": 79.82
+ },
+ "lever-pull": {
+  "success_rate": 1.0,
+  "mean_steps": 79.3
+ },
+ "peg-insert-side": {
+  "success_rate": 0.82,
+  "mean_steps": 101.73170731707317
+ },
+ "peg-unplug-side": {
+  "success_rate": 0.98,
+  "mean_steps": 107.20408163265306
+ },
+ "pick-out-of-hole": {
+  "success_rate": 1.0,
+  "mean_steps": 116.5
+ },
+ "pick-place": {
+  "success_rate": 1.0,
+  "mean_steps": 52.98
+ },
+ "pick-place-wall": {
+  "success_rate": 1.0,
+  "mean_steps": 85.32
+ },
+ "plate-slide": {
+  "success_rate": 1.0,
+  "mean_steps": 50.86
+ },
+ "plate-slide-back": {
+  "success_rate": 1.0,
+  "mean_steps": 63.9
+ },
+ "plate-slide-back-side": {
+  "success_rate": 1.0,
+  "mean_steps": 45.06
+ },
+ "plate-slide-side": {
+  "success_rate": 1.0,
+  "mean_steps": 48.38
+ },
+ "push": {
+  "success_rate": 1.0,
+  "mean_steps": 61.28
+ },
+ "push-back": {
+  "success_rate": 0.94,
+  "mean_steps": 158.93617021276594
+ },
+ "push-wall": {
+  "success_rate": 1.0,
+  "mean_steps": 79.7
+ },
+ "reach": {
+  "success_rate": 1.0,
+  "mean_steps": 48.0
+ },
+ "reach-wall": {
+  "success_rate": 1.0,
+  "mean_steps": 46.84
+ },
+ "shelf-place": {
+  "success_rate": 0.94,
+  "mean_steps": 98.87234042553192
+ },
+ "soccer": {
+  "success_rate": 0.88,
+  "mean_steps": 80.3409090909091
+ },
+ "stick-pull": {
+  "success_rate": 0.9,
+  "mean_steps": 128.84444444444443
+ },
+ "stick-push": {
+  "success_rate": 1.0,
+  "mean_steps": 74.12
+ },
+ "sweep": {
+  "success_rate": 1.0,
+  "mean_steps": 86.42
+ },
+ "sweep-into": {
+  "success_rate": 0.9,
+  "mean_steps": 55.53333333333333
+ },
+ "window-close": {
+  "success_rate": 1.0,
+  "mean_steps": 80.1
+ },
+ "window-open": {
+  "success_rate": 1.0,
+  "mean_steps": 86.58
+ }
+}
