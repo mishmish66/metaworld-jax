@@ -55,6 +55,8 @@ _HAND_RESET_CTRL = np.array([-1., 1.])
 _KINEMATICS = ("xpos", "xquat", "xmat", "xipos", "ximat", "geom_xpos", "geom_xmat", "site_xpos", "site_xmat")
 # fields of the recorded hand resets in assets/hand_resets.npz
 _HAND_RESET_FIELDS = ("qpos", "qvel", "act", "ctrl", "mocap_pos", "mocap_quat", "qacc_warmstart")
+# MuJoCo's mjMAXVAL: a world whose positions, velocities, or accelerations exceed it has diverged
+_MAX_VALUE = 1e10
 # relative pose and torque scale of the welds to mocap bodies
 _MOCAP_WELD = np.array([0., 0., 0., 0., 0., 0., -1., 0., 0., 0., 5.])
 # bounds of the observed hand position
@@ -215,9 +217,26 @@ class Sim:
         return mjx.kinematics(self._placed(layout), d)
 
     def step(self, d, layout, n):
-        """`n` simulator steps of world `d`."""
+        """`n` simulator steps of world `d`, restarting it as MuJoCo does if it diverged."""
         m = self._placed(layout)
-        return jax.lax.fori_loop(0, n, lambda _, d: mjx.step(m, d), d)
+        return self._restart_if_diverged(jax.lax.fori_loop(0, n, lambda _, d: mjx.step(m, d), d))
+
+    def _restart_if_diverged(self, d):
+        """`d`, or MuJoCo's `mj_resetData` state if its positions, velocities, or accelerations diverged."""
+        diverged = jnp.any(jnp.stack([
+            ~jnp.all(jnp.isfinite(x) & (jnp.abs(x) < _MAX_VALUE)) for x in (d.qpos, d.qvel, d.qacc)
+        ]))
+        m = self.model
+        mocap = m.body_mocapid >= 0
+        initial = dict(
+            qpos=m.qpos0, qvel=np.zeros(m.nv), qacc=np.zeros(m.nv), qacc_warmstart=np.zeros(m.nv), act=np.zeros(m.na),
+            ctrl=np.zeros(m.nu), mocap_pos=m.body_pos[mocap][np.argsort(m.body_mocapid[mocap])],
+            mocap_quat=m.body_quat[mocap][np.argsort(m.body_mocapid[mocap])],
+        )
+        return d.replace(**{
+            k: jnp.where(diverged, jnp.asarray(v, getattr(d, k).dtype).reshape(getattr(d, k).shape), getattr(d, k))
+            for k, v in initial.items()
+        })
 
     def set_state(self, d, layout, qpos=None, qvel=None):
         """Meta-World's `set_state`: `d` at joint positions `qpos` and velocities `qvel`, forwarded."""

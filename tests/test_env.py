@@ -167,6 +167,16 @@ def test_camera_observations_match_their_spaces_unbatched_and_mapped():
     assert int(jnp.ptp(mapped["corner_image"])) > 0
 
 
+def test_diverged_worlds_restart_from_the_initial_state():
+    env = MetaworldPOMDP("peg-unplug-side", max_worlds=1)
+    state = jax.jit(env.reset)(jax.random.key(0))
+    diverged = state._replace(data=state.data.replace(qvel=state.data.qvel.at[9:].set(1e12)))
+    after = jax.jit(lambda s: env.step(None, s, jnp.zeros(4)))(diverged)
+    # the plug, at rest in the initial state, barely moves in the substeps after the restart
+    np.testing.assert_allclose(np.asarray(after.data.qpos[9:]), env.sim.model.qpos0[9:], atol=1e-3)
+    assert bool(jnp.all(jnp.isfinite(jax.jit(env.observe)(None, after, None))))
+
+
 def test_observing_nothing_is_rejected():
     with pytest.raises(ValueError):
         MetaworldPOMDP("reach", observe_state=False)
