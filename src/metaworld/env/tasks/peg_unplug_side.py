@@ -25,7 +25,8 @@ class PegUnplugSide(Task):
         pos_plug = rand_vec + jnp.array([0.044, 0., 0.131])
         init_tcp = self.tcp_center(d)
         qpos = d.qpos.at[9:12].set(pos_plug).at[12:16].set(jnp.array([1., 0., 0., 0.]))
-        d = sim.set_state(d, layout, qpos, d.qvel.at[9:12].set(0.))
+        # the plug starts at rest, whatever spin the hand reset left it
+        d = sim.set_state(d, layout, qpos, d.qvel.at[9:15].set(0.))
         episode = dict(
             target_pos=pos_plug + jnp.array([0.15, 0., 0.]), obj_init_pos=self.site_pos(d, "pegEnd"),
             init_tcp=init_tcp,

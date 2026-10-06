@@ -77,6 +77,24 @@ _BUFFER_OVERFLOWS = int(
 )
 
 
+def _keep_external_streams_registered():
+    """
+    Keep CUDA streams that Warp does not own (JAX's) registered with Warp for the life of the process. Warp wraps
+    JAX's stream anew on every FFI call, and freeing any one wrapper must not unregister the stream while another
+    wrapper is using it.
+    """
+    release = wp.Stream.__del__
+
+    def __del__(self):
+        if getattr(self, "owner", False):
+            release(self)
+
+    wp.Stream.__del__ = __del__
+
+
+_keep_external_streams_registered()
+
+
 def _visible_sites(m) -> np.ndarray:
     """Sites MuJoCo's renderer shows by default, as Meta-World renders them."""
     return np.flatnonzero((m.site_group <= 2) & (m.site_rgba[:, 3] > 0))
