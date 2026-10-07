@@ -5,6 +5,9 @@ from metaworld.env import rewards
 from metaworld.env.tasks.base import Task, info
 
 WRENCH_HANDLE_LENGTH = 0.02
+# radius within which the ring's hole is over the peg, and height above the peg's top that clears it
+RING_CLEARANCE = 0.009
+RING_CLEAR_HEIGHT = 0.02
 
 
 def reward_quat(obs):
@@ -68,15 +71,52 @@ class Assembly(Task):
         )
         return in_place, success
 
-    def evaluate(self, d, obs, action, episode):
+    @staticmethod
+    def _corrected_reward_pos(ring, target_pos):
+        """
+        Placement as in `_reward_pos`, but with a target height that keeps the ring above the peg's top until it is
+        centered over the peg, and free below that.
+        """
+        pos_error = target_pos - ring
+        radius = jnp.linalg.norm(pos_error[:2])
+        success = (radius < 0.02) & (pos_error[2] > 0.)
+        centered = radius < RING_CLEARANCE
+        clear = target_pos[2] + RING_CLEAR_HEIGHT
+        funnel = 0.02 * jnp.log(jnp.maximum(radius - 0.01, 1e-30)) + 0.2
+        target_height = jnp.where(centered, jnp.minimum(ring[2], clear), jnp.maximum(funnel, clear))
+        pos_error = pos_error.at[2].set(target_height - ring[2])
+        lifted = (ring[2] > 0.02) | centered
+        in_place = 0.1 * lifted + 0.9 * rewards.tolerance(
+            jnp.linalg.norm(pos_error * jnp.array([1., 1., 3.])), bounds=(0., 0.005), margin=0.4, sigmoid="long_tail",
+        )
+        centering = rewards.tolerance(radius, bounds=(0., RING_CLEARANCE), margin=0.03, sigmoid="long_tail")
+        return in_place, centering, success
+
+    def _evaluate(self, d, obs, action, episode, corrected):
         quat = reward_quat(obs)
         reward_grab = self.gripper_caging_reward(
             d, episode, action, wrench_threshed(obs), object_reach_radius=0.01, obj_radius=0.015,
             pad_success_thresh=0.02, xz_thresh=0.01, medium_density=True,
         )
-        in_place, success = self._reward_pos(self.site_pos(d, "RoundNut"), episode["target_pos"])
-        reward = jnp.where(success, 10., (2. * reward_grab + 6. * in_place) * quat)
+        ring = self.site_pos(d, "RoundNut")
+        if corrected:
+            in_place, centering, success = self._corrected_reward_pos(ring, episode["target_pos"])
+            shaped = 2. * reward_grab + 6. * in_place + 1.5 * centering * in_place
+        else:
+            in_place, success = self._reward_pos(ring, episode["target_pos"])
+            shaped = 2. * reward_grab + 6. * in_place
+        reward = jnp.where(success, 10., shaped * quat)
         return reward, info(
             success=success, near_object=quat, grasp_success=reward_grab >= 0.5, grasp_reward=reward_grab,
             in_place_reward=in_place, obj_to_target=0., unscaled_reward=reward,
         )
+
+    def evaluate(self, d, obs, action, episode):
+        return self._evaluate(d, obs, action, episode, corrected=False)
+
+    def corrected_evaluate(self, d, obs, action, episode):
+        """
+        Meta-World's placement reward pays most for holding the ring beside the peg below the peg's top, where it
+        cannot slide on; this one pays most for centering the ring over the peg first.
+        """
+        return self._evaluate(d, obs, action, episode, corrected=True)

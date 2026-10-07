@@ -7,6 +7,7 @@ from metaworld.env.tasks.base import Task, info
 
 class ShelfPlace(Task):
     xml = "sawyer_shelf_placing.xml"
+    physics = "upstream"
     hand_low = (-0.5, 0.40, 0.05)
     hand_high = (0.5, 1, 0.5)
     hand_init_pos = (0., 0.6, 0.2)

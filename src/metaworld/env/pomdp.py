@@ -252,7 +252,8 @@ class MetaworldPOMDP:
     def __init__(
         self,
         task: str,
-        physics: str | dict = "fast",
+        physics: str | dict | None = None,
+        reward: Literal["upstream", "corrected"] = "upstream",
         goal_observable: bool = True,
         rand_vecs: jax.Array | None = None,
         camera_names: Sequence[str] = (),
@@ -268,7 +269,10 @@ class MetaworldPOMDP:
         graph_mode: Literal["jax", "warp", "none"] = "warp",
     ):
         """
-        Simulates with the simulation options of `physics`, a name in `PHYSICS` or a dict of MuJoCo option overrides.
+        Simulates with the simulation options of `physics`, a name in `PHYSICS` or a dict of MuJoCo option overrides, or by
+        default the task's preset `Task.physics`.
+        Rewards are Meta-World's, or with `reward="corrected"`, Meta-World's with corrections where a task's reward pays for
+        failing; success is Meta-World's either way.
         With `goal_observable`, the last three observations are the goal position, as in Meta-World's MT
         benchmarks; otherwise they are zeros, as in its ML benchmarks. With `rand_vecs`, resets draw uniformly
         from these random reset vectors, as a Meta-World benchmark draws from its goals.
@@ -281,14 +285,19 @@ class MetaworldPOMDP:
         """
         if task not in TASKS:
             raise ValueError(f"task must be one of {sorted(TASKS)}, not {task!r}")
+        if reward not in ("upstream", "corrected"):
+            raise ValueError(f"reward must be \"upstream\" or \"corrected\", not {reward!r}")
         if not (observe_state or observe_proprio or camera_names):
             raise ValueError("the POMDP must observe the state, proprioception, or cameras")
         m = load_model(task)
         self.model = m
         self._task = TASKS[task](m)
+        self._evaluate = self._task.corrected_evaluate if reward == "corrected" else self._task.evaluate
         self._goal_observable = goal_observable
         self._terminate_on_success = terminate_on_success
         self._rand_vecs = None if rand_vecs is None else jnp.asarray(rand_vecs, jnp.float32)
+        if physics is None:
+            physics = self._task.physics
         default_contacts, default_constraints = _BUFFER_SIZES
         self.max_worlds = max_worlds
         self.sim = Sim(
@@ -438,9 +447,9 @@ class MetaworldPOMDP:
         return d.replace(geom_xpos=d.geom_xpos.at[self._markers].set(pos.astype(d.geom_xpos.dtype)))
 
     def evaluate(self, state, action) -> tuple[jax.Array, dict[str, jax.Array]]:
-        """Meta-World's reward and info for arriving at `state` by `action`."""
+        """The reward and Meta-World's info for arriving at `state` by `action`."""
         obs = self._state_obs(state)
-        return self._task.evaluate(state.data, obs, jnp.asarray(action, jnp.float32), state.episode)
+        return self._evaluate(state.data, obs, jnp.asarray(action, jnp.float32), state.episode)
 
     def reward(self, key, state, action, next_state):
         return self.evaluate(next_state, action)[0]

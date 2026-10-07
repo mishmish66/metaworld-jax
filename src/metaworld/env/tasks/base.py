@@ -52,6 +52,8 @@ class Task:
     hand_reset_depends_on_layout = False
     # sites the task places at reset, by the episode constant that is their position in their body
     placed_sites: dict[str, str] = {}
+    # preset in `PHYSICS` the task simulates with by default: the fastest one it trains with
+    physics = "fast"
     TARGET_RADIUS = 0.05
 
     def __init__(self, m: mujoco.MjModel):
@@ -173,6 +175,10 @@ class Task:
     def evaluate(self, d, obs, action, episode):
         """Meta-World's reward and info dict at data `d` with observation `obs` after `action`."""
         raise NotImplementedError
+
+    def corrected_evaluate(self, d, obs, action, episode):
+        """`evaluate` with the task's corrections to rewards that pay for failing, where it has any."""
+        return self.evaluate(d, obs, action, episode)
 
     def gripper_caging_reward(
         self, d, episode, action, obj_pos, obj_radius, pad_success_thresh, object_reach_radius, xz_thresh,

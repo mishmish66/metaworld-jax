@@ -35,16 +35,23 @@ differences:
   3.3.0. Recorded actions reproduce recorded trajectories closely for a few steps; over an episode they drift
   apart, as any two simulators do. With Meta-World's physics settings, Meta-World's scripted policies succeed as
   often as in Meta-World (0.99 against 0.98 mean success over the 50 tasks).
-- **Physics settings.** By default (`physics="fast"`) each step is 3 substeps of 4.17 ms, about 1.5× faster than
-  Meta-World's 5 substeps of 2.5 ms, which `physics="upstream"` keeps. The scripted policies succeed as often with
-  either (0.98 and 0.99 mean success over the 50 tasks, against Meta-World's 0.98); fewer, longer substeps break
-  grasping. `benchmarks/README.md` has the measurements.
+- **Physics settings.** Each task simulates by default with the fastest preset it trains with (`Task.physics`). For
+  most tasks that is `physics="fast"`: each step is 3 substeps of 4.17 ms, about 1.5× faster than Meta-World's 5
+  substeps of 2.5 ms, which `physics="upstream"` keeps. The scripted policies succeed as often with either (0.98 and
+  0.99 mean success over the 50 tasks, against Meta-World's 0.98); fewer, longer substeps break grasping.
+  Coffee-push, shelf-place, stick-pull, and stick-push use `upstream`, where PPO (8 seeds, 20M steps) solves at least
+  two more seeds with it: 8, 6, 6, and 7 against 2, 4, 3, and 5 with `fast`. Passing `physics` overrides the task's
+  preset. `benchmarks/README.md` has the measurements.
 - **Hand reset.** Meta-World starts each episode by simulating 250 substeps that move the hand to its initial
   position. Here that state is recorded from Meta-World (`assets/hand_resets.npz`) and loaded, so resets cost no
   simulation. In seven tasks (box-close, disassemble, door-lock, door-unlock, handle-press, handle-pull,
   peg-unplug-side) the hand reset depends on where the task places its objects, so it is simulated each episode and
   ends slightly differently from Meta-World's; in door-lock and door-unlock the gripper presses on the lock during
   the reset, and the outcome differs by up to 2 cm.
+- **Corrected rewards.** With `reward="corrected"`, tasks whose Meta-World reward pays for failing use a corrected
+  one; the others, and success everywhere, stay Meta-World's. Assembly's placement reward pays most for holding the
+  ring beside the peg below its top, where it cannot slide on; the corrected one pays most for centering the ring over
+  the peg first. With PPO (8 seeds, 20M steps) it solves 4 seeds against Meta-World's reward's 1.
 - **Contacts in info.** `grasp_success` tests whether both finger pads touch the object by distance, where
   Meta-World tests for contact forces; they agree on at least 95% of recorded steps.
 - **Bin-picking.** Meta-World fixes one reward margin at the first reward computed; here it is fixed at reset,

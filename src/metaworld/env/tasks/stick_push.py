@@ -10,6 +10,7 @@ _STICK_Z = 0.02
 class StickPush(Task):
     placed_sites = {"goal": "target_pos"}
     xml = "sawyer_stick_obj.xml"
+    physics = "upstream"
     hand_low = (-0.5, 0.40, 0.05)
     hand_high = (0.5, 1, 0.5)
     hand_init_pos = (0., 0.6, 0.2)

@@ -167,6 +167,43 @@ def test_camera_observations_match_their_spaces_unbatched_and_mapped():
     assert int(jnp.ptp(mapped["corner_image"])) > 0
 
 
+def test_tasks_simulate_with_their_own_physics_preset_by_default():
+    from metaworld.env.pomdp import CONTROL_TIMESTEP, PHYSICS
+    for name, cls in TASKS.items():
+        assert cls.physics in PHYSICS, name
+    for name in ("reach", "coffee-push"):
+        env = MetaworldPOMDP(name, max_worlds=1)
+        timestep = PHYSICS[TASKS[name].physics].get("timestep", env.model.opt.timestep)
+        assert env.sim.substeps == round(CONTROL_TIMESTEP / timestep), name
+
+
+def test_unknown_rewards_are_rejected():
+    with pytest.raises(ValueError):
+        MetaworldPOMDP("reach", reward="dense", max_worlds=1)
+
+
+def test_corrected_rewards_keep_meta_worlds_success_at_recorded_states():
+    upstream = MetaworldPOMDP("assembly", physics="upstream", max_worlds=NUM_WORLDS)
+    corrected = MetaworldPOMDP("assembly", physics="upstream", reward="corrected", max_worlds=NUM_WORLDS)
+    ep = reference.episode("assembly", 0)
+    steps = np.arange(1, len(ep["reward"]) + 1)
+    states = jax.jit(lambda: reference.recorded_states(upstream, ep, steps))()
+    actions = jnp.asarray(ep["action"])
+    _, info = jax.jit(jax.vmap(upstream.evaluate))(states, actions)
+    _, corrected_info = jax.jit(jax.vmap(corrected.evaluate))(states, actions)
+    np.testing.assert_array_equal(np.asarray(corrected_info["success"]), np.asarray(info["success"]))
+
+
+def test_corrected_assembly_placement_pays_more_over_the_peg_than_beside_it():
+    from metaworld.env.tasks.assembly import Assembly
+    peg_top = jnp.array([0., 0.8, 0.1])
+    beside_below_top = peg_top + jnp.array([0.035, 0., -0.01])
+    over_above_top = peg_top + jnp.array([0.004, 0., 0.02])
+    beside, _, _ = Assembly._corrected_reward_pos(beside_below_top, peg_top)
+    over, _, _ = Assembly._corrected_reward_pos(over_above_top, peg_top)
+    assert float(over) > float(beside) + 0.2
+
+
 def test_diverged_worlds_restart_from_the_initial_state():
     env = MetaworldPOMDP("peg-unplug-side", max_worlds=1)
     state = jax.jit(env.reset)(jax.random.key(0))
