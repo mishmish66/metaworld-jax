@@ -1,0 +1,47 @@
+{
+ "reach": {
+  "one_process": 4603.319738835295,
+  "processes": 48,
+  "all_processes": 136533.45860003488
+ },
+ "pick-place": {
+  "one_process": 2471.812277523259,
+  "processes": 48,
+  "all_processes": 64738.476388287534
+ },
+ "door-open": {
+  "one_process": 4570.685429633208,
+  "processes": 48,
+  "all_processes": 131197.82852555852
+ },
+ "assembly": {
+  "one_process": 4571.255505555088,
+  "processes": 48,
+  "all_processes": 119182.463333353
+ },
+ "basketball": {
+  "one_process": 5855.184871528877,
+  "processes": 48,
+  "all_processes": 136281.36493324648
+ },
+ "peg-insert-side": {
+  "one_process": 3704.1874922574775,
+  "processes": 48,
+  "all_processes": 100885.88498678524
+ },
+ "push": {
+  "one_process": 2348.794382334927,
+  "processes": 48,
+  "all_processes": 64693.54900574568
+ },
+ "hammer": {
+  "one_process": 4655.789683541799,
+  "processes": 48,
+  "all_processes": 113121.52038425983
+ },
+ "drawer-open": {
+  "one_process": 7375.762020763297,
+  "processes": 48,
+  "all_processes": 196436.17655817952
+ }
+}

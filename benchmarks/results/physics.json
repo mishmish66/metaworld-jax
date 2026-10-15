@@ -1,0 +1,510 @@
+{
+ "fast": {
+  "options": {
+   "timestep": 0.004166666666666667
+  },
+  "assembly": {
+   "steps_per_second": 217522.07244070762,
+   "success_rate": 1.0,
+   "mean_steps": 88.64
+  },
+  "basketball": {
+   "steps_per_second": 281683.33079455944,
+   "success_rate": 0.9,
+   "mean_steps": 93.11111111111111
+  },
+  "bin-picking": {
+   "steps_per_second": 278110.6329587902,
+   "success_rate": 1.0,
+   "mean_steps": 184.7
+  },
+  "box-close": {
+   "steps_per_second": 137207.89477691115,
+   "success_rate": 0.88,
+   "mean_steps": 134.52272727272728
+  },
+  "button-press": {
+   "steps_per_second": 312986.8104912815,
+   "success_rate": 1.0,
+   "mean_steps": 59.02
+  },
+  "button-press-topdown": {
+   "steps_per_second": 355379.2313570156,
+   "success_rate": 1.0,
+   "mean_steps": 65.74
+  },
+  "button-press-topdown-wall": {
+   "steps_per_second": 362355.4519493937,
+   "success_rate": 1.0,
+   "mean_steps": 57.24
+  },
+  "button-press-wall": {
+   "steps_per_second": 272549.6704625506,
+   "success_rate": 0.98,
+   "mean_steps": 64.04081632653062
+  },
+  "coffee-button": {
+   "steps_per_second": 223053.2461957875,
+   "success_rate": 1.0,
+   "mean_steps": 35.02
+  },
+  "coffee-pull": {
+   "steps_per_second": 284888.75610124145,
+   "success_rate": 1.0,
+   "mean_steps": 80.28
+  },
+  "coffee-push": {
+   "steps_per_second": 269159.7925353927,
+   "success_rate": 1.0,
+   "mean_steps": 54.32
+  },
+  "dial-turn": {
+   "steps_per_second": 343968.3121209349,
+   "success_rate": 1.0,
+   "mean_steps": 78.88
+  },
+  "disassemble": {
+   "steps_per_second": 206331.82722000175,
+   "success_rate": 0.96,
+   "mean_steps": 169.79166666666666
+  },
+  "door-close": {
+   "steps_per_second": 315159.9367742825,
+   "success_rate": 1.0,
+   "mean_steps": 68.6
+  },
+  "door-lock": {
+   "steps_per_second": 222770.71662426903,
+   "success_rate": 1.0,
+   "mean_steps": 106.94
+  },
+  "door-open": {
+   "steps_per_second": 215000.6548408764,
+   "success_rate": 0.92,
+   "mean_steps": 82.47826086956522
+  },
+  "door-unlock": {
+   "steps_per_second": 216510.4420096831,
+   "success_rate": 1.0,
+   "mean_steps": 48.36
+  },
+  "drawer-close": {
+   "steps_per_second": 265757.99352579284,
+   "success_rate": 1.0,
+   "mean_steps": 78.26
+  },
+  "drawer-open": {
+   "steps_per_second": 267082.45644236053,
+   "success_rate": 1.0,
+   "mean_steps": 88.1
+  },
+  "faucet-close": {
+   "steps_per_second": 342366.2320348664,
+   "success_rate": 1.0,
+   "mean_steps": 65.12
+  },
+  "faucet-open": {
+   "steps_per_second": 327845.1706164185,
+   "success_rate": 1.0,
+   "mean_steps": 61.66
+  },
+  "hammer": {
+   "steps_per_second": 203627.57546209288,
+   "success_rate": 1.0,
+   "mean_steps": 65.36
+  },
+  "hand-insert": {
+   "steps_per_second": 257488.35493443802,
+   "success_rate": 1.0,
+   "mean_steps": 59.04
+  },
+  "handle-press": {
+   "steps_per_second": 151771.40479086683,
+   "success_rate": 1.0,
+   "mean_steps": 34.36
+  },
+  "handle-press-side": {
+   "steps_per_second": 155607.865788994,
+   "success_rate": 1.0,
+   "mean_steps": 71.02
+  },
+  "handle-pull": {
+   "steps_per_second": 218526.2984513231,
+   "success_rate": 1.0,
+   "mean_steps": 168.98
+  },
+  "handle-pull-side": {
+   "steps_per_second": 233743.39462018554,
+   "success_rate": 1.0,
+   "mean_steps": 110.02
+  },
+  "lever-pull": {
+   "steps_per_second": 246916.57187019533,
+   "success_rate": 0.94,
+   "mean_steps": 93.53191489361703
+  },
+  "peg-insert-side": {
+   "steps_per_second": 276237.09566238435,
+   "success_rate": 0.88,
+   "mean_steps": 100.79545454545455
+  },
+  "peg-unplug-side": {
+   "steps_per_second": 161738.73163790643,
+   "success_rate": 0.98,
+   "mean_steps": 100.10204081632654
+  },
+  "pick-out-of-hole": {
+   "steps_per_second": 306976.19128197536,
+   "success_rate": 1.0,
+   "mean_steps": 194.34
+  },
+  "pick-place": {
+   "steps_per_second": 338150.47849193716,
+   "success_rate": 1.0,
+   "mean_steps": 53.16
+  },
+  "pick-place-wall": {
+   "steps_per_second": 263997.4519403484,
+   "success_rate": 1.0,
+   "mean_steps": 90.36
+  },
+  "plate-slide": {
+   "steps_per_second": 297610.97120104305,
+   "success_rate": 1.0,
+   "mean_steps": 50.08
+  },
+  "plate-slide-back": {
+   "steps_per_second": 285669.771379081,
+   "success_rate": 1.0,
+   "mean_steps": 69.0
+  },
+  "plate-slide-back-side": {
+   "steps_per_second": 281290.85676771164,
+   "success_rate": 1.0,
+   "mean_steps": 45.96
+  },
+  "plate-slide-side": {
+   "steps_per_second": 307164.72320386744,
+   "success_rate": 1.0,
+   "mean_steps": 48.64
+  },
+  "push": {
+   "steps_per_second": 341658.9989661576,
+   "success_rate": 1.0,
+   "mean_steps": 60.86
+  },
+  "push-back": {
+   "steps_per_second": 374194.89315645717,
+   "success_rate": 0.98,
+   "mean_steps": 209.9591836734694
+  },
+  "push-wall": {
+   "steps_per_second": 264800.29679091036,
+   "success_rate": 1.0,
+   "mean_steps": 79.74
+  },
+  "reach": {
+   "steps_per_second": 335536.87978097994,
+   "success_rate": 1.0,
+   "mean_steps": 48.14
+  },
+  "reach-wall": {
+   "steps_per_second": 260366.07072364702,
+   "success_rate": 1.0,
+   "mean_steps": 46.72
+  },
+  "shelf-place": {
+   "steps_per_second": 247923.04167206623,
+   "success_rate": 0.94,
+   "mean_steps": 101.38297872340425
+  },
+  "soccer": {
+   "steps_per_second": 278549.1813237964,
+   "success_rate": 0.82,
+   "mean_steps": 81.1951219512195
+  },
+  "stick-pull": {
+   "steps_per_second": 179534.47131669687,
+   "success_rate": 0.82,
+   "mean_steps": 194.29268292682926
+  },
+  "stick-push": {
+   "steps_per_second": 206464.11478242342,
+   "success_rate": 1.0,
+   "mean_steps": 77.06
+  },
+  "sweep": {
+   "steps_per_second": 342811.37718410784,
+   "success_rate": 1.0,
+   "mean_steps": 93.48
+  },
+  "sweep-into": {
+   "steps_per_second": 248540.54478564134,
+   "success_rate": 0.88,
+   "mean_steps": 54.02272727272727
+  },
+  "window-close": {
+   "steps_per_second": 336047.4831129559,
+   "success_rate": 1.0,
+   "mean_steps": 80.46
+  },
+  "window-open": {
+   "steps_per_second": 312632.8732423659,
+   "success_rate": 1.0,
+   "mean_steps": 87.02
+  }
+ },
+ "upstream": {
+  "options": {},
+  "assembly": {
+   "steps_per_second": 256316.4799184048,
+   "success_rate": 1.0,
+   "mean_steps": 88.66
+  },
+  "basketball": {
+   "steps_per_second": 331187.1222410669,
+   "success_rate": 0.96,
+   "mean_steps": 92.08333333333333
+  },
+  "bin-picking": {
+   "steps_per_second": 329794.02877796954,
+   "success_rate": 1.0,
+   "mean_steps": 196.28
+  },
+  "box-close": {
+   "steps_per_second": 172707.7973503794,
+   "success_rate": 0.88,
+   "mean_steps": 110.4090909090909
+  },
+  "button-press": {
+   "steps_per_second": 363717.48958287074,
+   "success_rate": 1.0,
+   "mean_steps": 58.94
+  },
+  "button-press-topdown": {
+   "steps_per_second": 445576.3151885743,
+   "success_rate": 1.0,
+   "mean_steps": 65.9
+  },
+  "button-press-topdown-wall": {
+   "steps_per_second": 441301.01636188396,
+   "success_rate": 1.0,
+   "mean_steps": 57.42
+  },
+  "button-press-wall": {
+   "steps_per_second": 330036.54755939724,
+   "success_rate": 0.98,
+   "mean_steps": 64.34693877551021
+  },
+  "coffee-button": {
+   "steps_per_second": 266318.27577232494,
+   "success_rate": 1.0,
+   "mean_steps": 35.18
+  },
+  "coffee-pull": {
+   "steps_per_second": 344212.6923727298,
+   "success_rate": 1.0,
+   "mean_steps": 79.34
+  },
+  "coffee-push": {
+   "steps_per_second": 325334.5329472791,
+   "success_rate": 1.0,
+   "mean_steps": 54.68
+  },
+  "dial-turn": {
+   "steps_per_second": 411874.27987887047,
+   "success_rate": 1.0,
+   "mean_steps": 73.54
+  },
+  "disassemble": {
+   "steps_per_second": 281852.33667330333,
+   "success_rate": 0.94,
+   "mean_steps": 185.9787234042553
+  },
+  "door-close": {
+   "steps_per_second": 371636.18338637834,
+   "success_rate": 1.0,
+   "mean_steps": 67.12
+  },
+  "door-lock": {
+   "steps_per_second": 287594.9768347704,
+   "success_rate": 1.0,
+   "mean_steps": 116.9
+  },
+  "door-open": {
+   "steps_per_second": 258460.6298869287,
+   "success_rate": 0.94,
+   "mean_steps": 79.68085106382979
+  },
+  "door-unlock": {
+   "steps_per_second": 284681.09178774524,
+   "success_rate": 1.0,
+   "mean_steps": 44.16
+  },
+  "drawer-close": {
+   "steps_per_second": 312660.422841778,
+   "success_rate": 1.0,
+   "mean_steps": 78.58
+  },
+  "drawer-open": {
+   "steps_per_second": 329566.05186282797,
+   "success_rate": 1.0,
+   "mean_steps": 88.38
+  },
+  "faucet-close": {
+   "steps_per_second": 404655.9407021726,
+   "success_rate": 1.0,
+   "mean_steps": 65.0
+  },
+  "faucet-open": {
+   "steps_per_second": 400601.5232505062,
+   "success_rate": 1.0,
+   "mean_steps": 59.12
+  },
+  "hammer": {
+   "steps_per_second": 250967.39638878673,
+   "success_rate": 1.0,
+   "mean_steps": 66.18
+  },
+  "hand-insert": {
+   "steps_per_second": 320093.0281452436,
+   "success_rate": 1.0,
+   "mean_steps": 58.8
+  },
+  "handle-press": {
+   "steps_per_second": 187157.7779241737,
+   "success_rate": 1.0,
+   "mean_steps": 28.44
+  },
+  "handle-press-side": {
+   "steps_per_second": 184237.16940925983,
+   "success_rate": 1.0,
+   "mean_steps": 41.66
+  },
+  "handle-pull": {
+   "steps_per_second": 257679.57763532063,
+   "success_rate": 1.0,
+   "mean_steps": 103.16
+  },
+  "handle-pull-side": {
+   "steps_per_second": 262759.82077709,
+   "success_rate": 1.0,
+   "mean_steps": 76.9
+  },
+  "lever-pull": {
+   "steps_per_second": 294467.1256121956,
+   "success_rate": 1.0,
+   "mean_steps": 80.16
+  },
+  "peg-insert-side": {
+   "steps_per_second": 338545.5357830957,
+   "success_rate": 0.92,
+   "mean_steps": 96.97826086956522
+  },
+  "peg-unplug-side": {
+   "steps_per_second": 196339.58330129308,
+   "success_rate": 1.0,
+   "mean_steps": 96.44
+  },
+  "pick-out-of-hole": {
+   "steps_per_second": 383870.85494027124,
+   "success_rate": 1.0,
+   "mean_steps": 117.64
+  },
+  "pick-place": {
+   "steps_per_second": 409925.7242113244,
+   "success_rate": 1.0,
+   "mean_steps": 53.1
+  },
+  "pick-place-wall": {
+   "steps_per_second": 323971.8212248697,
+   "success_rate": 1.0,
+   "mean_steps": 85.0
+  },
+  "plate-slide": {
+   "steps_per_second": 345230.68027742836,
+   "success_rate": 1.0,
+   "mean_steps": 50.64
+  },
+  "plate-slide-back": {
+   "steps_per_second": 347629.57936573325,
+   "success_rate": 1.0,
+   "mean_steps": 63.8
+  },
+  "plate-slide-back-side": {
+   "steps_per_second": 337579.15490075416,
+   "success_rate": 1.0,
+   "mean_steps": 44.96
+  },
+  "plate-slide-side": {
+   "steps_per_second": 380098.62066089193,
+   "success_rate": 1.0,
+   "mean_steps": 48.12
+  },
+  "push": {
+   "steps_per_second": 403856.34239347756,
+   "success_rate": 1.0,
+   "mean_steps": 60.78
+  },
+  "push-back": {
+   "steps_per_second": 459713.09392895113,
+   "success_rate": 1.0,
+   "mean_steps": 193.32
+  },
+  "push-wall": {
+   "steps_per_second": 317140.46605849866,
+   "success_rate": 1.0,
+   "mean_steps": 80.56
+  },
+  "reach": {
+   "steps_per_second": 410231.9641441281,
+   "success_rate": 1.0,
+   "mean_steps": 47.86
+  },
+  "reach-wall": {
+   "steps_per_second": 306563.322445455,
+   "success_rate": 1.0,
+   "mean_steps": 46.36
+  },
+  "shelf-place": {
+   "steps_per_second": 306450.9653486556,
+   "success_rate": 1.0,
+   "mean_steps": 88.54
+  },
+  "soccer": {
+   "steps_per_second": 334538.38274619635,
+   "success_rate": 0.86,
+   "mean_steps": 80.65116279069767
+  },
+  "stick-pull": {
+   "steps_per_second": 241032.54879442172,
+   "success_rate": 0.92,
+   "mean_steps": 126.3913043478261
+  },
+  "stick-push": {
+   "steps_per_second": 242945.48520408923,
+   "success_rate": 1.0,
+   "mean_steps": 73.86
+  },
+  "sweep": {
+   "steps_per_second": 388619.36935116287,
+   "success_rate": 1.0,
+   "mean_steps": 88.08
+  },
+  "sweep-into": {
+   "steps_per_second": 309757.03763638786,
+   "success_rate": 0.88,
+   "mean_steps": 54.97727272727273
+  },
+  "window-close": {
+   "steps_per_second": 402912.80774354975,
+   "success_rate": 1.0,
+   "mean_steps": 80.44
+  },
+  "window-open": {
+   "steps_per_second": 356144.31910535577,
+   "success_rate": 1.0,
+   "mean_steps": 87.0
+  }
+ }
+}

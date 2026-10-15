@@ -1,0 +1,90 @@
+{
+ "upstream": {
+  "options": {},
+  "assembly": {
+   "steps_per_second": 135861.381128309,
+   "success_rate": 1.0,
+   "mean_steps": 88.66
+  },
+  "basketball": {
+   "steps_per_second": 175048.92116261905,
+   "success_rate": 0.96,
+   "mean_steps": 92.08333333333333
+  },
+  "pick-place": {
+   "steps_per_second": 223764.28794553064,
+   "success_rate": 1.0,
+   "mean_steps": 53.12
+  },
+  "peg-insert-side": {
+   "steps_per_second": 179967.29472752364,
+   "success_rate": 0.92,
+   "mean_steps": 96.97826086956522
+  },
+  "door-open": {
+   "steps_per_second": 139034.62088203733,
+   "success_rate": 0.94,
+   "mean_steps": 79.68085106382979
+  },
+  "push": {
+   "steps_per_second": 229579.10407667665,
+   "success_rate": 1.0,
+   "mean_steps": 60.78
+  },
+  "hammer": {
+   "steps_per_second": 132495.23072385398,
+   "success_rate": 1.0,
+   "mean_steps": 66.18
+  },
+  "drawer-open": {
+   "steps_per_second": 179125.11066169583,
+   "success_rate": 1.0,
+   "mean_steps": 88.38
+  }
+ },
+ "dt4ms": {
+  "options": {
+   "timestep": 0.004166666666666667
+  },
+  "assembly": {
+   "steps_per_second": 212692.77553093358,
+   "success_rate": 1.0,
+   "mean_steps": 88.64
+  },
+  "basketball": {
+   "steps_per_second": 273420.9835747979,
+   "success_rate": 0.9,
+   "mean_steps": 93.11111111111111
+  },
+  "pick-place": {
+   "steps_per_second": 335304.60350649187,
+   "success_rate": 1.0,
+   "mean_steps": 53.16
+  },
+  "peg-insert-side": {
+   "steps_per_second": 279398.6550653322,
+   "success_rate": 0.88,
+   "mean_steps": 100.79545454545455
+  },
+  "door-open": {
+   "steps_per_second": 212265.4514541778,
+   "success_rate": 0.92,
+   "mean_steps": 82.47826086956522
+  },
+  "push": {
+   "steps_per_second": 340153.9278705516,
+   "success_rate": 1.0,
+   "mean_steps": 60.86
+  },
+  "hammer": {
+   "steps_per_second": 207907.40217564994,
+   "success_rate": 1.0,
+   "mean_steps": 65.36
+  },
+  "drawer-open": {
+   "steps_per_second": 272062.8023913283,
+   "success_rate": 1.0,
+   "mean_steps": 88.1
+  }
+ }
+}
