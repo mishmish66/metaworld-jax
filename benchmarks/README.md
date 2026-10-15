@@ -19,7 +19,8 @@ uv run python benchmarks/report.py                             # the tables belo
 `upstream_baseline.py` declares its own dependencies (PEP 723), so uv runs it with upstream Meta-World and MuJoCo
 3.3.0 in a separate environment.
 
-The `fast` preset, the default, is the `dt4ms` setting below. The GPU timings are noisy: the GPUs ran other jobs
+The `fast` preset is the `dt4ms` setting below; it is the default for every task except the four that set `upstream`
+(`Task.physics`). The GPU timings are noisy: the GPUs ran other jobs
 during the measurements.
 
 ## Results

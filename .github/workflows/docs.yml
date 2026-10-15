@@ -21,10 +21,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: Metaworld
-      - uses: actions/checkout@v4
-        with:
-          repository: mishmish66/jax-pomdps
-          path: jax_mdps
       - uses: astral-sh/setup-uv@v6
       - name: Build
         working-directory: Metaworld

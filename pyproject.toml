@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "metaworld"
-version = "3.1.1"
+version = "0.1.0"
 description = "A slop fork of Meta-World: its 50 Sawyer manipulation tasks as jax_pomdps POMDPs on MuJoCo Warp"
 readme = "README.md"
 license = "LicenseRef-VibeCoded-AI-Slop-1.0 AND MIT"
@@ -27,7 +27,7 @@ video = ["imageio", "imageio-ffmpeg", "Pillow"]
 dev = ["pytest"]
 
 [tool.uv.sources]
-jax-pomdps = { path = "../jax_mdps", editable = true }
+jax-pomdps = { git = "https://github.com/mishmish66/jax-pomdps.git" }
 
 [tool.setuptools.packages.find]
 where = ["src"]
