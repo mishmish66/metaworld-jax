@@ -1,8 +1,10 @@
 > **This is a slop fork of [Meta-World](https://github.com/Farama-Foundation/Metaworld).** It is an AI-written port
-> of its manipulation tasks, scripted policies, and benchmarks to JAX on MuJoCo Warp, made by someone who did not
-> write Meta-World. It is not affiliated with or endorsed by the Meta-World authors, and credit for the tasks, the
-> robot models, and the scripted policies is theirs. The Meta-World parts stay under its MIT license
-> (`THIRD_PARTY_NOTICES.md`); only what is new is under the VibeCoded AI-Slop License (`LICENSE`).
+> of its manipulation tasks, scripted policies, and benchmarks to JAX on MuJoCo Warp: an AI coding agent wrote its
+> code, tests, and documentation, not a person by hand, for someone who did not write Meta-World. It is not
+> affiliated with or endorsed by the Meta-World authors and claims no part of their work: the tasks, the robot
+> models, the rewards, the scripted policies, and the benchmark splits are theirs. The Meta-World parts stay under
+> its MIT license and copyright, unchanged (`THIRD_PARTY_NOTICES.md`); only what the port adds is under the
+> VibeCoded AI-Slop License (`LICENSE`).
 
 Meta-World's 50 Sawyer manipulation tasks as [jax_pomdps](https://github.com/mishmish66/jax-pomdps) POMDPs simulated
 by MuJoCo Warp, with its scripted policies and benchmark task splits. Every method is a pure function of pytrees,
@@ -93,6 +95,6 @@ with these settings; their simulated hand resets make them about ten times slowe
   and Evaluation for Multi-Task and Meta Reinforcement Learning", CoRL 2019.
 - **dm_control**, © DeepMind Technologies Limited, Apache 2.0: the reward utilities Meta-World adapted.
 - **MuJoCo, MJX, and MuJoCo Warp**, © DeepMind Technologies Limited, Apache 2.0: dependencies.
-- **Everything else** is under the VibeCoded AI-Slop License v1.0, © 2026 Misha Lvovsky.
+- **Everything else**, the AI-written port, is under the VibeCoded AI-Slop License v1.0, with no copyright claimed.
 
 `THIRD_PARTY_NOTICES.md` lists file by file what comes from where, with the full license texts.

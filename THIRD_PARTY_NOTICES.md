@@ -1,6 +1,7 @@
 # Third-party notices
 
-This repository is a slop fork: an AI-written port of Meta-World's manipulation tasks to JAX on MuJoCo Warp.
+This repository is a slop fork: an AI-written port of Meta-World's manipulation tasks to JAX on MuJoCo Warp,
+written by an AI coding agent and not by hand. It claims none of the work listed below.
 This file lists, file by file, where each part comes from, who made it, and under which license, followed by
 the full license texts. The repository's own `LICENSE` covers only what is new; everything below stays under its
 original license.

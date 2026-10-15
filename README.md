@@ -1,7 +1,10 @@
 # Meta-World on MuJoCo Warp
 
-> **A slop fork of [Meta-World](https://github.com/Farama-Foundation/Metaworld):** an AI-written port, not affiliated
-> with or endorsed by its authors. Credit for the tasks, robot models, and scripted policies is theirs.
+> **A slop fork of [Meta-World](https://github.com/Farama-Foundation/Metaworld):** an AI-written port, written by an
+> AI coding agent and not by hand, and not affiliated with or endorsed by Meta-World's authors. It claims no part of
+> Meta-World: the tasks, robot models, rewards, scripted policies, and benchmarks are its authors' work, under its
+> MIT license and copyright, unchanged ([THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)). Cite Meta-World, not
+> this repository.
 
 Meta-World's 50 Sawyer manipulation tasks as [jax_pomdps](https://github.com/mishmish66/jax-pomdps) POMDPs on MuJoCo
 Warp, with its scripted policies and MT/ML benchmark splits, all in JAX.
@@ -33,6 +36,6 @@ start from.
 ## License
 
 The Meta-World parts stay under its MIT license; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Everything new
-is under the [VibeCoded AI-Slop License v1.0](LICENSE). If you use the tasks, cite McLean et al., "Meta-World+: An
+is under the [VibeCoded AI-Slop License v1.0](LICENSE), with no copyright claimed. If you use the tasks, cite McLean et al., "Meta-World+: An
 Improved, Standardized, RL Benchmark", NeurIPS 2025, and Yu et al., "Meta-World: A Benchmark and Evaluation for
 Multi-Task and Meta Reinforcement Learning", CoRL 2019.

@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "metaworld"
 version = "0.1.0"
-description = "A slop fork of Meta-World: its 50 Sawyer manipulation tasks as jax_pomdps POMDPs on MuJoCo Warp"
+description = "A slop fork of Meta-World: an AI-written port of its 50 Sawyer manipulation tasks to jax_pomdps POMDPs on MuJoCo Warp"
 readme = "README.md"
 license = "LicenseRef-VibeCoded-AI-Slop-1.0 AND MIT"
 license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]

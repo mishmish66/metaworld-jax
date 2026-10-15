@@ -10,13 +10,14 @@ reward utilities) remains under its own MIT license, listed with its authors
 and full text in THIRD_PARTY_NOTICES.md. Its notice and attribution
 requirements still apply to any copy of this repository, whatever section 1
 below says. Credit for the tasks, the robot models and the scripted policies
-belongs to the Meta-World authors.
+belongs to the Meta-World authors. The port was written by an AI coding agent,
+not by hand. Its prompter claims no copyright in any of it, including what the
+port adds, and no part of Meta-World; Meta-World's copyright and license are
+unchanged.
 
 --------------------------------------------------------------------------------
 
 VibeCoded AI-Slop License v1.0
-
-Copyright (c) 2026 Misha Lvovsky
 
 This software, source code, documentation, configuration, generated artifacts,
 and whatever else happened to end up in this repository (collectively, the
